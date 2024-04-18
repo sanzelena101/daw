@@ -1,0 +1,40 @@
+EJERCICIO EUCLIDIA
+
+package repaso;
+
+import java.util.Scanner;
+
+public class ecludia {
+public static double distancia_euclidia (double x1, double y1, double x2, double y2) {
+	 
+	return (Math.sqrt( Math.pow (x1-x2,2) )+(Math.pow (y1-y2,2)));
+	
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+	double x1;
+	double y1;
+	double x2;
+	double y2;
+	double formula;
+	
+	System.out.println ("dime los numeros del primer punto");
+	System.out.println ("¿cual es el primer numero?");
+	x1=input.nextDouble ();
+	System.out.println ("¿cual es el segundo numero?"); 
+	y1=input.nextDouble ();
+	System.out.println ("dime los numeros del segundo punto");
+	System.out.println ("¿cual es el primer numero?");
+	x2=input.nextDouble ();
+	System.out.println ("¿cual es el segundo numero?"); 
+	y2=input.nextDouble ();
+	
+	formula = distancia_euclidia(x1,x2,y1,y2);
+	System.out.println (formula); 
+	
+}
+}

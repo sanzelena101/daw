@@ -1,0 +1,54 @@
+package com.mycompany.juegocerillas;
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class JUEGOCERILLAS {
+
+    public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Juego de las 13 cerillas");
+        int cerilla = 13;
+
+        while (cerilla > 0) {
+            // Mostrar estado actual de las cerillas
+            for (int i = 0; i < cerilla; i++) {
+                System.out.print("| ");
+            }
+            System.out.println();
+
+            // Turno del jugador
+            System.out.println("Comienzas tú, dime el numero de cerillas que quieras quitar ");
+            int numero = leer.nextInt();
+            while (numero < 1 || numero > 3 || numero > cerilla) {
+                System.out.println("Número no válido, elige entre 1 y 3, y que no supere el número de cerillas restantes.");
+                numero = leer.nextInt();
+            }
+            cerilla -= numero;
+
+            // Verificar si el jugador ganó
+            if (cerilla <= 0) {
+                System.out.println("¡Has ganado! La máquina retiró la última cerilla.");
+                break;
+            }
+
+            // Mostrar estado actual de las cerillas
+            for (int i = 0; i < cerilla; i++) {
+                System.out.print("| ");
+            }
+            System.out.println();
+
+            // Turno de la máquina
+            System.out.println("Ahora es turno de la maquina");
+            int numAleatorio = (cerilla == 1) ? 1 : new Random().nextInt(3) + 1;
+            System.out.println("La máquina retira " + numAleatorio + " cerilla(s).");
+            cerilla -= numAleatorio;
+
+            // Verificar si la máquina ganó
+            if (cerilla <= 0) {
+                System.out.println("¡Has perdido!.");
+                break;
+            }
+        }
+    }
+}

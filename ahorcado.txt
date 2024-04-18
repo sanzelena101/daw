@@ -1,0 +1,119 @@
+package com.mycompany.holamundo;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Profesor
+ */
+public class HolaMundo {
+    
+ public static void main(String[] args) {
+        final int INTENTOS_TOTALES = 7; // Constante con el limite de fallos
+        int intentos = 0; //Intentos del usuario
+        int aciertos = 0; //Aciertos del usuario
+        Scanner teclado = new Scanner(System.in);
+        teclado.useDelimiter("\n");
+        char resp;
+        Random rnd = new Random(); //Elige una palabra al azar de un array
+        String arrayPalabras[] = new String[5]; //Array de palabras
+        arrayPalabras[0] = "JAVA";
+        arrayPalabras[1] = "PASCAL";
+        arrayPalabras[2] = "RUBY";
+        arrayPalabras[3] = "JAVASCRIPT";
+        arrayPalabras[4] = "HTML";
+       
+        do {        
+        int alea = rnd.nextInt(arrayPalabras.length); //Elegimos un valor al azar
+        char[] dividida = divide(arrayPalabras[alea]); //Divide la palabra en un array de char
+        char[] tusRespuestas = new char[dividida.length]; //Almacena los guiones y letras que introduzca el usuario
+ 
+        // Rellenamos tusRespuestas inicialmente con guiones
+        for(int i = 0; i < tusRespuestas.length; i++){
+            tusRespuestas[i] = '_';
+        }
+        
+        System.out.println("Â¡Adivina el lenguaje de programaciÃ³n!");
+        
+        // Repetimos hasta que acertemos o agotemos los intentos
+        while(intentos < INTENTOS_TOTALES && aciertos != tusRespuestas.length){
+            //Muestra el array tusRespuestas dividido con espacios (sino no se ve bien)
+            imprimeEspacios(tusRespuestas);
+            // Solicitamos al usuario una letra
+            System.out.print("\nIntroduce una letra: ");
+            //No tenemos en cuenta las mayÃºsculas o minÃºsculas, ni si introduce mÃ¡s de una
+            resp = teclado.next().toUpperCase().charAt(0);
+            // Recorremos el array y comprobamos si se ha producido un acierto
+            for(int i = 0; i < dividida.length; i++){
+                if(dividida[i]==resp){//Si la respuesta coincide con uno de los caracteres
+                    tusRespuestas[i] = dividida[i]; //Introducimos el caracter en tusRespuestas
+                    dividida[i] = ' ';//Sustituimos el valor por un espacio para no buscar mÃ¡s
+                    aciertos++; //Sumamos 1 a los aciertos
+                }
+            }    
+            intentos++; //Sumamos 1 a los intentos
+        }
+        // Si hemos acertado todas imprimimos un mensahe
+        if(aciertos == tusRespuestas.length){
+            System.out.print("\nÂ¡Enhorabuena! Has acertado la palabra. Era ");
+            imprimeEspacios(tusRespuestas);//Muestra el array con las respuestas
+        }
+        // Si no indica al usuario que ha perdido y muestra la palabra
+        else{
+            System.out.print("\no¡Lo siento! Agotaste tus intentos. La palabra era: ");
+            //Este bucle permite introducir entre letra y letra un espacio
+            for(int i = 0; i < arrayPalabras[alea].length(); i++){
+                System.out.print(arrayPalabras[alea].charAt(i) + " ");
+            }
+        }
+        // Reseteamos contadores
+        intentos = 0;
+        aciertos = 0;
+        // Volvemos a preguntarle al usuario si quiere volver a jugar
+        resp = pregunta ("\n\n¿Quieres volver a jugar?",teclado);
+        }while(resp != 'n');
+    }
+    
+     /**
+     * MÃ©todo que divide una cadena en un array de caracteres
+     * @return Array de caracteres
+     */
+    private static char[] divide(String palabra){
+        char[] letras;
+        letras = new char[palabra.length()];
+        for(int i = 0; i < palabra.length(); i++){
+            letras[i] = palabra.charAt(i);
+        }
+        return letras;
+    }
+    
+    /**
+     * Método que imprime la palabra con espacios intercalados entre las letras
+     * @param tusRespuestas el array de caracteres
+     */
+    private static void imprimeEspacios(char[] tusRespuestas){
+        
+        for(int i = 0; i < tusRespuestas.length; i++){
+            System.out.print(tusRespuestas[i] + " ");
+        }
+    }
+    
+    /**
+     * Método que permite al usuario volver a jugar
+     * @param mensaje Texto para mostrar al usuario
+     * @return Caracter de respuesta (s/n)
+     */
+    public static char pregunta(String mensaje, Scanner teclado) {
+        char resp;
+        System.out.println(mensaje + " (s/n)");
+        //Ignoramos las minúsculas y mayúsculas y solo tomamos el primer caracter
+        resp = teclado.next().toLowerCase().charAt(0);
+        //Repetimos hasta que el usuario introduzca n o s
+        while (resp != 's' && resp != 'n') {
+            System.out.println("¡Error! Solo se admite S o N");
+            resp = teclado.next().toLowerCase().charAt(0);
+        }
+        return resp;
+    }    
+}

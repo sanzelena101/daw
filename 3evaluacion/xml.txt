@@ -1,0 +1,54 @@
+package com.mycompany.ejer2_xml;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
+
+/**
+ *
+ * @author elena
+ */
+public class Ejer2_xml {
+
+    public static void main(String[] args) {
+     try {
+            Scanner scanner = new Scanner(System.in);
+           PrintStream ps=new PrintStream(System.out);
+            // Escribir los detalles del libro en un archivo binario
+
+             Scanner sc = new Scanner(System.in);
+            System.out.println("¿Cómo quieres que se nombre el fichero?");
+            String nombrefichero = sc.next();
+            
+             FileOutputStream fos = new FileOutputStream("C:\\pruebas_lecturayescritura\\" + nombrefichero + ".xml");
+            
+            
+            // Solicitar al usuario los detalles del libro
+            
+                 System.out.println("pulsa -1 para salir ");
+                System.out.println("Ingrese información sobre el libro:");
+                
+                System.out.print("Título: ");
+                String titulo = scanner.nextLine();
+                ps.println("<titulo>"+titulo +"<titulo>" );
+                
+                System.out.print("Autor: ");
+                String autor = scanner.nextLine();
+                ps.println("<autor>"+autor +"<autor>" );
+                
+                System.out.print("Año de publicación: ");
+                int anioPublicacion = scanner.nextInt();
+                ps.println("<año>"+anioPublicacion +"<año>" );
+         
+          
+            ps.close();
+            fos.close();
+           
+
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+    }    
+   }
+

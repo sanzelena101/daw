@@ -1,0 +1,174 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.trabajoconclases;
+
+/**
+ *
+ * @author Nocturno
+ */
+public class Persona {
+    
+// Variable y constantes
+
+private final char ConstanteSexo = 'H';
+private final int ConstanteInfPeso = -1;
+private final int ConstanteIdPeso = 0;
+private final int ConstanteSobPeso = 1;
+
+//atributo
+private String nombre;
+private int edad;
+private int DNI;
+private char sexo;
+private double peso;
+private double altura;
+
+
+//contructor
+public Persona() {
+this.nombre = "";
+this.edad = 0;
+this.sexo = ConstanteSexo;
+this.peso = 0;
+this.altura = 0;
+}
+
+
+public Persona(String _nombre, int _edad, char _sexo) {
+this.nombre = _nombre;
+this.edad = _edad;
+this.sexo = _sexo;
+this.peso = 0;
+this.altura = 0;
+}
+
+public Persona(String _nombre, int _edad, int _DNI, char _sexo, double _peso, double _altura) {
+this.nombre = _nombre;
+this.edad = _edad;
+this.sexo = _sexo;
+this.peso = _peso;
+this.altura = _altura;
+//generarDNI();
+//comprobarSexo(char sexo);
+}
+
+//metodos privados 
+
+/*
+private void comprobarSexo (){
+    //si el sexo no es una H o una M, por defecto es H
+    if (sexo !='H'&& sexo!='M'){
+        this.sexo = sexo_DEF;
+    }
+}*/
+
+
+//metodos magicos getters and setter
+public String getNombre() {
+return nombre;
+}
+
+public void setNombre(String nombre) {
+this.nombre = nombre;
+}
+
+public int getEdad() {
+return edad;
+}
+
+public void setEdad(int edad) {
+this.edad = edad;
+}
+
+public int getDNI() {
+return DNI;
+}
+
+public void setDNI(int DNI) {
+this.DNI = DNI;
+}
+
+public char getSexo() {
+return sexo;
+}
+
+public void setSexo(char sexo) {
+this.sexo = sexo;
+}
+
+public double getPeso() {
+return peso;
+}
+
+public void setPeso(double peso) {
+this.peso = peso;
+}
+
+public double getAltura() {
+return altura;
+}
+
+public void setAltura(double altura) {
+this.altura = altura;
+} 
+
+// mis metodos
+public int calcularIMC(){
+double IMC = peso/(Math.pow(altura,2));
+//segun el peso, devuelve un codigo
+if (IMC<20)
+return ConstanteInfPeso;
+else if(IMC >= 20 && IMC <= 25)
+return ConstanteIdPeso;
+else
+return ConstanteSobPeso;
+}
+
+
+public boolean esMayorDeEdad(){
+boolean mayorEdad=false;
+if (edad>18){
+mayorEdad=true;
+}
+return mayorEdad;
+}
+
+public char comprobarSexo (char sexo){
+if (sexo!='H' && sexo!='M'){
+this.sexo = ConstanteSexo;
+}
+
+return this.sexo;
+}
+
+public String toString(){
+return nombre + " tiene" + edad + " años, con N. DNI " + DNI + " con peso " + calcularIMC() + " y altura " + altura;
+}
+
+
+public int generaDNI() {
+final int divisor = 23;
+int numDNI = ((int) Math.floor (Math.random()*(100000000 - 10000000) + 100000000));
+int res =numDNI -(numDNI / divisor * divisor);
+return 0;
+
+//calculamos la letra del dni
+char letraDNI =generarLetraDNI (res);
+//pasamos el dni a string
+DNI = Integer.toString(numDNI) + letraDNI;
+}
+
+public char generaraLetra (int res){
+char letra [] = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J',
+'Z','Z','S','Q','V','H','L','C','K','E'};
+return letra [res];
+}
+
+//pes
+
+
+
+}
+

@@ -1,0 +1,46 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package objetocoche;
+
+/**
+ *
+ * @author Nocturno
+ */
+public class Objetocoche {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        //programa que acelere de 0 a 100
+        Coche miCoche = new Coche ("seat", "ibiza", 10);
+        System.out.println("a la velocidad que va mi coche es: " +miCoche.getVelocidadActual() + " km/h");
+        
+        for (int i=0; i<10; i++){
+            miCoche.acelerar (10);
+            System.out.println("el coche de georgi tiene una velocidad de " +miCoche.getVelocidadActual() +" km/h");
+        }
+        System.out.println("\n estoy llendo muy rapido por el acueducto, tienes que frenar");
+        for (int i=0; i<5; i++){
+            miCoche.frenar(10);
+            System.out.println("el coche de georgi tiene una velocidad de: " +miCoche.getVelocidadActual()+ " km/h");
+        }
+        
+         for (int i=0; i>15; i++){
+            
+            if (i==100) {
+                 boolean motorGripado= true;
+                 System.out.println("el motor se ha roto");
+            }
+            else (  ){
+             
+            }
+                
+                   
+            
+        }
+    }
+    
+}

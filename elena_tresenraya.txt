@@ -1,0 +1,60 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package tresenraya;
+import java.util.Scanner;
+
+/**
+ * @author Nocturno
+ */
+public class Tresenraya {
+
+   public Tresenraya(){
+        char[][] tablero = new char [3][3];
+        }
+   
+   //se le tiene que ir llamando para que imprima
+   public static void imprimirtablero(char [][] tablero){
+       for (int i = 0; i < 3; i++){
+           for (int j = 0; j<3; j++ ){
+           tablero [i][j]= '-';
+           }
+        }
+    }
+   
+    public static void main(String[] args) {
+    Scanner input= new Scanner (System.in);
+    char iniciar[][] = new char [3][3];
+    boolean turno= true;  //para crear el bucle
+    char jugadoractual= 'X';//cambiar de jugador
+    int fila;
+    int columna;
+    
+        //comienza
+        System.out.println ("¡Bienvenido al tres en raya!");
+        
+        //se crea el bucle
+        while (true){
+             do{
+                        // destras del turno jugador tendria que poner el actual
+                        System.out.println ("Turno del jugador " + jugadoractual );
+                        imprimirtablero( iniciar);// se imprime reiteradamente el tablero
+                       
+                        //comprobar que el numero esta entre 1 y 3, se repite
+                       do{
+                           System.out.println ("dima la columna");
+                        columna= input.nextInt();
+                       }while (columna<0 || columna>3);
+                       
+                       
+                       do{
+                        System.out.println ("Dime la fila" );
+                        fila= input.nextInt();
+                       }while (fila<0 || fila>3);
+    
+                }while (fila<=0);
+           }
+    }
+    
+}

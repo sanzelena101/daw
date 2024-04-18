@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+/**
+ *
+ * @author Nocturno
+ */
+public class Saltodelongitud {
+
+ 
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        //aqui escribe en que parte del indice quiere
+        int numero;                
+        
+        //contador por cada array para que se desplace
+        int contdorsal=0;
+        
+        do{
+            System.out.println("---------------------------------");
+            System.out.println("1. Inscribir participantes");
+            System.out.println("2. Mostrar listado por datos");
+            System.out.println("3. Mostrar listado por marcas");
+            System.out.println("4. Salir");
+            System.out.println("---------------------------------");
+            System.out.println("Por favor introduca una opción: ");
+            numero=input.nextInt ();
+            
+        
+            switch (numero){
+                    case 1 -> {
+                        do{
+                            int dorsal[]= new int [1];
+                            System.out.println("Introduzca dorsal: ");
+                            dorsal [contdorsal++]= input.nextInt();
+                            
+                            if (numero==numero){
+                               
+                            System.out.println("¡Error! El dorsal ya está registrado. Introduzca otro dorsal.");
+                            }
+                            
+                            else{
+                                int uno []= new int [10];
+                                System.out.println("Introduzca marca del 2021: ");
+
+                                int dos []= new int [10];
+                                System.out.println("Introduzca marca del 2022: ");
+
+                                int tres []= new int [10];
+                                System.out.println("Introduzca marca del 2023: ");
+                            }   
+                        }
+                        while(contdorsal<10);
+                        System.out.println("ya hay 10 dorsales, no puedes añadir más");
+                        
+                        break;
+                    }
+                    
+                    //Mostrar listado de datos.
+                    case 2 -> {
+                        System.out.println("listado de datos segun, segun dorsal: ");
+                        System.out.println("dorsal - marcas ");
+                        //METODO BURBUJA
+                        break;
+                    }     
+                        
+                   //  Mostrar listado por marcas:   
+                    case 3 -> {
+                        break;
+                    } 
+           }
+    
+        }
+            
+        //salir del programa
+         while (numero!=4);
+          System.out.println("¡ADIOS!");
+       
+   } 
+}

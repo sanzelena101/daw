@@ -1,0 +1,120 @@
+primero
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Nocturno
+ */
+public class libro {
+    //atributos
+    private int ISBN;
+    private String titulo;
+    private String autor;
+    private int numPaginas;
+    
+    //constructores 
+    public libro (int _ISBN, String _titulo, String _autor, int _numPaginas){
+        ISBN = _ISBN;
+        titulo = _titulo;
+        autor = _autor;
+        numPaginas = _numPaginas;
+        };
+    
+    //metodos
+
+    public int getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(int ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public int getNumPaginas() {
+        return numPaginas;
+    }
+
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+          }
+       
+        public String toString(){
+            return "el libro" +titulo + " con ISBN" + ISBN + " "+ "creado por el autor" + autor + "tiene" +numPaginas + "paginas.";
+                 
+        };
+        
+        
+  
+}
+
+
+
+
+
+
+
+
+SEGUNDO
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author Nocturno
+ */
+public class objeto {
+    
+    public static void main(String[] args) {
+     /*
+    libro libro1= new libro();
+    libro1.setAutor ("elena");
+    libro1.setISBN (10);
+    libro1.setNumPaginas (500);
+    libro1.setTitulo("triunfando en el maria");
+    
+    System.out.println ("el numero tiene " + libro1.getNumPaginas());
+    */
+     
+    // crear los objetos
+    libro libro1 = new libro(165, "luna de pluton", "gus", 30 );
+    libro libro2 = new libro (177, "el señor de los anillos", 50 );
+    
+    libro1.setNumPaginas 
+            
+    // comprobamos cual d elos dos tiene mas paginas
+    if (libro1.getNumPaginas () > libro2.getNumPaginas ()){
+      System.out.println (libro1.getTitulo()+ "tiene mas paginas");  
+    }
+    else {
+         System.out.println(libro2.getTitulo () + "tiene mas paginas");
+
+    }
+    
+    //mostramos el estado con el toString
+    System.out.println(libro1.toString());
+    System.out.println(libro2.toString());
+    
+}
+}

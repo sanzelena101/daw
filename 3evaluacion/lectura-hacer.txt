@@ -1,0 +1,56 @@
+public class Ejer1_lecturayescritura {
+
+    public static FileOutputStream nombre() {
+        FileOutputStream fos = null;
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("¿Cómo quieres que se nombre el fichero?");
+            String nombrefichero = sc.next();
+
+            /*  fos = new FileOutputStream("C:\\pruebas_lecturayescritura\\" + nombrefichero + ".bin");*/
+            fos = new FileOutputStream("C:\\pruebas\\" + nombrefichero + ".bin");
+
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
+        return fos;
+    }
+
+    public static void palabras(FileOutputStream fos) {
+        try {
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("Dime una palabra:");
+            String palabra = sc.next();
+
+            PrintStream ps = new PrintStream(fos);
+
+            ps.println("Palabra original: " + palabra);
+
+            // Recorre la palabra
+            for (int i = 0; i < palabra.length(); i++) {
+                char letra = palabra.charAt(i);
+                if (Character.isUpperCase(letra)) {
+                    System.out.print(Character.toLowerCase(letra));
+                } else {
+                    System.out.print(Character.toUpperCase(letra));
+                }
+            }
+            
+            // Además también quiero escribir en consola
+            System.out.println("\nLa palabra cambiada sería: " + palabra);
+
+            // Cierre de flujos
+            ps.close();
+            fos.close();
+
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        FileOutputStream fos = nombre();
+        palabras(fos);
+    }
+}
